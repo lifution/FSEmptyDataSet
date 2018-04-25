@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.license   = { :type => 'MIT', :file => 'LICENSE' }
   s.authors   = 'Sheng'
   s.source    = {
-    :git => 'git@github.com:lifution/FSEmptyDataSet.git',
+    :git => 'https://github.com/lifution/FSEmptyDataSet.git',
     :tag => s.version.to_s
   }
   s.requires_arc = true
