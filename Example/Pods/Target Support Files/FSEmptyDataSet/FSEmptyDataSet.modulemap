@@ -1,0 +1,6 @@
+framework module FSEmptyDataSet {
+  umbrella header "FSEmptyDataSet-umbrella.h"
+
+  export *
+  module * { export * }
+}

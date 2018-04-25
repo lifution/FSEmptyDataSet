@@ -1,0 +1,26 @@
+{
+  "name": "FSEmptyDataSet",
+  "version": "1.0.0",
+  "summary": "A simple component of a empty page.",
+  "homepage": "https://github.com/lifution",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "lifusheng": "lifution@icloud.com"
+  },
+  "source": {
+    "git": "git@github.com:lifution/FSEmptyDataSet.git",
+    "tag": "1.0.0"
+  },
+  "requires_arc": true,
+  "platforms": {
+    "ios": "6.0"
+  },
+  "frameworks": [
+    "UIKit",
+    "Foundation"
+  ],
+  "source_files": "FSEmptyDataSet/Classes/**/*"
+}

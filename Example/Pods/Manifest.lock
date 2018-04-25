@@ -1,0 +1,16 @@
+PODS:
+  - FSEmptyDataSet (1.0.0)
+
+DEPENDENCIES:
+  - FSEmptyDataSet (from `../`)
+
+EXTERNAL SOURCES:
+  FSEmptyDataSet:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FSEmptyDataSet: 35ef984ccf1c8848a00124fc412468fd393379a1
+
+PODFILE CHECKSUM: 3097ef1657f63eeb76c2ef5b6b2b110d1c6505e7
+
+COCOAPODS: 1.5.0
