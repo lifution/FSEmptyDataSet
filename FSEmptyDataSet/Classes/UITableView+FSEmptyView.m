@@ -164,8 +164,15 @@
         emptyView.hidden = NO;
         return;
     }
-    NSInteger rowsInFirstSection = [self numberOfRowsInSection:0];
-    emptyView.hidden = (rowsInFirstSection != 0);
+    BOOL emptyViewShouldHide = NO;
+    for (NSInteger i = 0; i < sections; i ++) {
+        NSInteger rowsInSection = [self numberOfRowsInSection:i];
+        if (rowsInSection > 0) {
+            emptyViewShouldHide = YES;
+            break;
+        }
+    }
+    emptyView.hidden = emptyViewShouldHide;
 }
 
 #pragma mark - Setter
