@@ -382,10 +382,12 @@ static inline BOOL P_NSAttributedStringIsEmpty(NSAttributedString *attributedTex
     }
     
     // 优先判断时候有自定义 view。
+    BOOL customViewInvalid = YES; // 标记自定义 view 是否有效，以便 UIImageView 的设置。
     if (_dataSourceHas.customView) {
         _imageView.hidden = YES;
         UIView *customView = [_dataSource customViewForEmptyView:self];
         if (customView && [customView isKindOfClass:UIView.class]) {
+            customViewInvalid = NO;
             if (_customView) {
                 if (_customView != customView) {
                     [_customView removeFromSuperview];
@@ -398,13 +400,10 @@ static inline BOOL P_NSAttributedStringIsEmpty(NSAttributedString *attributedTex
                 [_contentView addSubview:_customView];
             }
         }
-        else if (_customView) {
-            [_customView removeFromSuperview];
-            _customView = nil;
-        }
     }
-    else {
-        // 没有自定义 view 后判断是否存在图片。
+    
+    // 如果自定义 view 无效则开始设置 UIImageView。
+    if (customViewInvalid) {
         if (_customView) {
             [_customView removeFromSuperview];
             _customView = nil;

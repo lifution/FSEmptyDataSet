@@ -123,7 +123,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 /**
  图片, 只需要返回 UIImage 实例即可, FSEmptyView 会根据图片的 size 自动调整 UIImageView 的 size。
- 如果实现了 `customViewForEmptyView:` 方法的话则会忽略该方法，不管是否返回有效的 UIImage 对象。
+ 如果实现了 `customViewForEmptyView:` 方法的话则会忽略该方法，不管是否返回有效的 UIImage 对象，
+ 但如果 `customViewForEmptyView:` 方法返回 nil 且该方法返回有效 UIImage 对象的话则当前方法有效。
  
  @note 如果不实现该方法或返回 nil 则隐藏 UIImageView.
  */

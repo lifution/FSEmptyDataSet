@@ -2,6 +2,9 @@
 一款简易的页面空白占位小组件.
 
 ## 版本更新
+##### 1.0.3
+* 修正：在 customView 无效的时候判断 UIImage 是否有效，如有效则设置显示 UIImage。
+
 ##### 1.0.2
 * 可以自定义 view 替代顶部 UIImageView 了，比如自定义一个 loadingView 之类的，可参考使用例子的第一个图。
 
@@ -28,8 +31,11 @@ self.collectionView.fs_emptyDataSource = self;
 ## 使用例子
 
 ![CustomView](https://i.loli.net/2018/11/04/5bdeb7f8e6931.gif)
+
 ![Normal](https://i.loli.net/2018/11/04/5bdea55d3e883.png)
+
 ![tableView](https://i.loli.net/2018/11/04/5bdea55ee502d.png) 
+
 ![collectionView](https://i.loli.net/2018/11/04/5bdea55d3e924.png)
 
 ## 安装要求
@@ -41,7 +47,7 @@ Xcode9.0+, iOS8.0+
 * `FSEmptyDataSet` 支持使用 `CocoaPods` 引入, 在 `podfile` 文件中添加以下代码:
 
     ```ruby
-    pod 'FSEmptyDataSet', '~> 1.0.2'
+    pod 'FSEmptyDataSet', '~> 1.0.3'
     ```
 
 * 也可以直接引入代码, 下载项目后把 `FSEmptyDataSet/Classes` 路径下的文件拖入你的项目中即可.

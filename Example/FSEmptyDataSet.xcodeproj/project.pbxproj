@@ -205,11 +205,6 @@
 				CLASSPREFIX = FS;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = lifusheng;
-				TargetAttributes = {
-					6003F589195388D20070C39A = {
-						DevelopmentTeam = Q5668NKEBD;
-					};
-				};
 			};
 			buildConfigurationList = 6003F585195388D10070C39A /* Build configuration list for PBXProject "FSEmptyDataSet" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -424,7 +419,7 @@
 			baseConfigurationReference = D887C8913F0CD04AFDCBB21A /* Pods-FSEmptyDataSet_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = Q5668NKEBD;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FSEmptyDataSet/FSEmptyDataSet-Prefix.pch";
 				INFOPLIST_FILE = "FSEmptyDataSet/FSEmptyDataSet-Info.plist";
@@ -440,7 +435,7 @@
 			baseConfigurationReference = 6A7419C462D671BE4C778F5F /* Pods-FSEmptyDataSet_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = Q5668NKEBD;
+				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FSEmptyDataSet/FSEmptyDataSet-Prefix.pch";
 				INFOPLIST_FILE = "FSEmptyDataSet/FSEmptyDataSet-Info.plist";
