@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name      = 'FSEmptyDataSet'
-  s.version   = '1.0.1'
+  s.version   = '1.0.2'
   s.summary   = 'A simple component of a empty page.'
   s.homepage  = 'https://github.com/lifution/FSEmptyDataSet'
   s.license   = { :type => 'MIT', :file => 'LICENSE' }

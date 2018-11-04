@@ -10,6 +10,8 @@
 		04BB84A320904DA60005DC2B /* NormalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB84A220904DA60005DC2B /* NormalViewController.m */; };
 		04BB84A6209053280005DC2B /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB84A5209053280005DC2B /* TableViewController.m */; };
 		04BB84A92090563B0005DC2B /* CollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04BB84A82090563B0005DC2B /* CollectionViewController.m */; };
+		04E3D2A5218EE86500A02916 /* CustomViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E3D2A4218EE86500A02916 /* CustomViewViewController.m */; };
+		04E3D2A8218EE9EC00A02916 /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 04E3D2A7218EE9EC00A02916 /* LoadingView.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -30,6 +32,10 @@
 		04BB84A5209053280005DC2B /* TableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		04BB84A72090563B0005DC2B /* CollectionViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectionViewController.h; sourceTree = "<group>"; };
 		04BB84A82090563B0005DC2B /* CollectionViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectionViewController.m; sourceTree = "<group>"; };
+		04E3D2A3218EE86500A02916 /* CustomViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomViewViewController.h; sourceTree = "<group>"; };
+		04E3D2A4218EE86500A02916 /* CustomViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomViewViewController.m; sourceTree = "<group>"; };
+		04E3D2A6218EE9EC00A02916 /* LoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
+		04E3D2A7218EE9EC00A02916 /* LoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
 		44218DADADF49D11318A2EAD /* Pods_FSEmptyDataSet_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FSEmptyDataSet_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58A195388D20070C39A /* FSEmptyDataSet_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FSEmptyDataSet_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -76,6 +82,8 @@
 			children = (
 				04BB84A120904DA60005DC2B /* NormalViewController.h */,
 				04BB84A220904DA60005DC2B /* NormalViewController.m */,
+				04E3D2A3218EE86500A02916 /* CustomViewViewController.h */,
+				04E3D2A4218EE86500A02916 /* CustomViewViewController.m */,
 				04BB84A4209053280005DC2B /* TableViewController.h */,
 				04BB84A5209053280005DC2B /* TableViewController.m */,
 				04BB84A72090563B0005DC2B /* CollectionViewController.h */,
@@ -124,6 +132,8 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* FSViewController.h */,
 				6003F5A6195388D20070C39A /* FSViewController.m */,
+				04E3D2A6218EE9EC00A02916 /* LoadingView.h */,
+				04E3D2A7218EE9EC00A02916 /* LoadingView.m */,
 				71719F9D1E33DC2100824A3D /* LaunchScreen.storyboard */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
@@ -258,7 +268,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-FSEmptyDataSet_Example/Pods-FSEmptyDataSet_Example-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-FSEmptyDataSet_Example/Pods-FSEmptyDataSet_Example-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/FSEmptyDataSet/FSEmptyDataSet.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -267,7 +277,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FSEmptyDataSet_Example/Pods-FSEmptyDataSet_Example-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FSEmptyDataSet_Example/Pods-FSEmptyDataSet_Example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -278,10 +288,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6003F59E195388D20070C39A /* FSAppDelegate.m in Sources */,
+				04E3D2A8218EE9EC00A02916 /* LoadingView.m in Sources */,
 				04BB84A320904DA60005DC2B /* NormalViewController.m in Sources */,
 				04BB84A92090563B0005DC2B /* CollectionViewController.m in Sources */,
 				6003F5A7195388D20070C39A /* FSViewController.m in Sources */,
 				04BB84A6209053280005DC2B /* TableViewController.m in Sources */,
+				04E3D2A5218EE86500A02916 /* CustomViewViewController.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

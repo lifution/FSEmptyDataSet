@@ -1,6 +1,10 @@
 # FSEmptyDataSet
 一款简易的页面空白占位小组件.
 
+## 版本更新
+##### 1.0.2
+* 可以自定义 view 替代顶部 UIImageView 了，比如自定义一个 loadingView 之类的，可参考使用例子的第一个图。
+
 ## 使用方式
 
 只要引入头文件 `FSEmptyDataSet` 之后遵守对应的 `FSEmptyViewDelegate` 和 ` FSEmptyViewDataSource` 即可, 然后实现对应的代理方法和数据源方法即可.
@@ -23,13 +27,12 @@ self.collectionView.fs_emptyDataSource = self;
 
 ## 使用例子
 
-![普通](https://i.loli.net/2018/11/04/5bdea55d3e883.png)
-
+![CustomView](https://i.loli.net/2018/11/04/5bdeb7f8e6931.gif)
+![Normal](https://i.loli.net/2018/11/04/5bdea55d3e883.png)
 ![tableView](https://i.loli.net/2018/11/04/5bdea55ee502d.png) 
-
 ![collectionView](https://i.loli.net/2018/11/04/5bdea55d3e924.png)
 
-## 要求
+## 安装要求
 
 Xcode9.0+, iOS8.0+
 

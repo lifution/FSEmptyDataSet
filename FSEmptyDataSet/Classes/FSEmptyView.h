@@ -11,6 +11,8 @@
  
     ----------------
     | UIImageView  |
+    |      or      |
+    |  CustomView  |
     ----------------
             |
          (space)
@@ -117,16 +119,36 @@ NS_ASSUME_NONNULL_BEGIN
 
 @optional
 
-#pragma mark ImageView
+#pragma mark - ImageView
 
 /**
- 图片, 只需要返回 UIImage 实例即可, FSEmptyView 会根据图片的 size 自动调整 UIImageView 的 size.
+ 图片, 只需要返回 UIImage 实例即可, FSEmptyView 会根据图片的 size 自动调整 UIImageView 的 size。
+ 如果实现了 `customViewForEmptyView:` 方法的话则会忽略该方法，不管是否返回有效的 UIImage 对象。
  
  @note 如果不实现该方法或返回 nil 则隐藏 UIImageView.
  */
 - (UIImage * _Nullable)imageForEmptyView:(FSEmptyView *)emptyView;
 
-#pragma mark TextLabel
+#pragma mark - CustomView
+
+/**
+ 自定义 view 替代 UIImageView 所在位置，比如设置一个 loading 控件。
+ 自定义 view 底部的空隙用的是 `imageBottomSpaceForEmptyView:` 方法的返回值(如果没有实现该方法则使用默认值)。
+
+ @note 此 customView 只是替代顶部的 UIImage 所在控件，并非指替代整个 EmptyView 的内容，
+       不过，你可以只设置 customView 而忽略其它所有控件，这样就达到了替代整个 EmptyView 内容的效果。
+ @return 自定义的 view，如果返回 nil 或者非 UIView 类型则会忽略。
+ */
+- (UIView * _Nullable)customViewForEmptyView:(FSEmptyView *)emptyView;
+
+/**
+ 配置自定义 view 的 size，
+ 如果不实现该方法则会先判断 customView 的 frame.size 是否有效，如果有效则使用 frame.size，
+ 否则使用 customView 的 `sizeThatFits:` 来确定 customView 的 size。
+ */
+- (CGSize)customViewSizeForEmptyView:(FSEmptyView *)emptyView;
+
+#pragma mark - TextLabel
 
 /**
  文本, 使用默认的字体和文本颜色.
@@ -143,7 +165,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSAttributedString * _Nullable)attributedTextForEmptyView:(FSEmptyView *)emptyView;
 
-#pragma mark DetailTextLabel
+#pragma mark - DetailTextLabel
 
 /**
  详细文本, 使用默认的字体和文本颜色.
@@ -160,7 +182,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (NSAttributedString * _Nullable)attributedDetailTextForEmptyView:(FSEmptyView *)emptyView;
 
-#pragma mark Button
+#pragma mark - Button
 
 /**
  按钮标题字体.

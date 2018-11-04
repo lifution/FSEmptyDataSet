@@ -1,25 +1,34 @@
 //
-//  NormalViewController.m
+//  CustomViewViewController.m
 //  FSEmptyDataSet_Example
 //
-//  Created by Sheng on 2018/4/25.
-//  Copyright © 2018 lifusheng. All rights reserved.
+//  Created by Sheng on 2018/11/4.
+//  Copyright © 2018年 lifusheng. All rights reserved.
 //
 
-#import "NormalViewController.h"
+#import "CustomViewViewController.h"
+#import "LoadingView.h"
+
 #import <FSEmptyDataSet/FSEmptyDataSet.h>
 
-@interface NormalViewController () <FSEmptyViewDelegate, FSEmptyViewDataSource>
+@interface CustomViewViewController () <FSEmptyViewDelegate, FSEmptyViewDataSource>
+{
+    LoadingView *_loadingView;
+}
 
 @end
 
-@implementation NormalViewController
+@implementation CustomViewViewController
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.title = @"Normal";
+    self.title = @"CustomView";
+    
+    {
+        _loadingView = [[LoadingView alloc] init];
+    }
     
     FSEmptyView *emptyView = [[FSEmptyView alloc] init];
     emptyView.delegate = self;
@@ -36,33 +45,23 @@
                                                                         views:NSDictionaryOfVariableBindings(emptyView)]];
 }
 
-#pragma mark - <FSEmptyViewDelegate>
-
-- (CGFloat)detailTextPreferredMaxLayoutWidthForEmptyView:(FSEmptyView *)emptyView
-{
-    return CGRectGetWidth(self.view.bounds) - 80.0 * 2;
-}
-
-- (UIColor *)backgroundColorForEmptyView:(FSEmptyView *)emptyView
-{
-    return [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1.00];
-}
-
 #pragma mark - <FSEmptyViewDataSource>
 
-- (UIImage * _Nullable)imageForEmptyView:(FSEmptyView *)emptyView
+- (UIView *)customViewForEmptyView:(FSEmptyView *)emptyView
 {
-    return [UIImage imageNamed:@"placeholder_whatsapp"];
+    return _loadingView;
 }
 
 - (NSString * _Nullable)textForEmptyView:(FSEmptyView *)emptyView
 {
-    return @"No Media";
+    return @"加载中, 请稍候...";
 }
 
-- (NSString * _Nullable)detailTextForEmptyView:(FSEmptyView *)emptyView
+#pragma mark - <FSEmptyViewDelegate>
+
+- (UIColor *)backgroundColorForEmptyView:(FSEmptyView *)emptyView
 {
-    return @"You can exchange media with Ignacio by tapping on the Arrow Up icon in the conversation screen.";
+    return [UIColor colorWithRed:0.95 green:0.95 blue:0.95 alpha:1.00];
 }
 
 @end
