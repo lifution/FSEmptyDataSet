@@ -41,7 +41,7 @@ Xcode9.0+, iOS8.0+
 * `FSEmptyDataSet` 支持使用 `CocoaPods` 引入, 在 `podfile` 文件中添加以下代码:
 
     ```ruby
-    pod 'FSEmptyDataSet'
+    pod 'FSEmptyDataSet', '~> 1.0.2'
     ```
 
 * 也可以直接引入代码, 下载项目后把 `FSEmptyDataSet/Classes` 路径下的文件拖入你的项目中即可.
