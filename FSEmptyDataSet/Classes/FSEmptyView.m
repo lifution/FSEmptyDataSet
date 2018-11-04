@@ -43,6 +43,8 @@ static inline BOOL P_NSAttributedStringIsEmpty(NSAttributedString *attributedTex
     
     struct {
         unsigned image : 1;
+        unsigned customView : 1;
+        unsigned customViewSize : 1;
         unsigned text : 1;
         unsigned detailText : 1;
         unsigned attributedText : 1;
@@ -59,6 +61,7 @@ static inline BOOL P_NSAttributedStringIsEmpty(NSAttributedString *attributedTex
 @property (nonatomic, strong) UIScrollView *scrollView; // 为适配横屏, 使用 scrollView 可以在横屏时可滑动显示所有内容.
 @property (nonatomic, strong) UIView *contentView;
 @property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UIView *customView;
 @property (nonatomic, strong) UILabel *textLabel;
 @property (nonatomic, strong) UILabel *detailTextLabel;
 @property (nonatomic, strong) UIButton *actionButton;
@@ -200,12 +203,36 @@ static inline BOOL P_NSAttributedStringIsEmpty(NSAttributedString *attributedTex
     if (_delegateHas.textBottomSpace) { textBottomSpace = [_delegate textBottomSpaceForEmptyView:self]; }
     if (_delegateHas.detailTextBottomSpace) { detailTextBottomSpace = [_delegate detailTextBottomSpaceForEmptyView:self]; }
     
-    if (!_imageView.isHidden) {
-        [_imageView sizeToFit];
-        contentWidth = CGRectGetWidth(_imageView.bounds);
-        contentHeight = CGRectGetHeight(_imageView.bounds);
-    } else {
-        // 图片不存在则不需要间隙了.
+    UIView *topView = nil;
+    if (_customView) {
+        topView = _customView;
+        CGSize customViewSize = CGSizeZero;
+        if (_dataSourceHas.customViewSize) {
+            customViewSize = [_dataSource customViewSizeForEmptyView:self];
+        }
+        else {
+            if (CGSizeEqualToSize(_customView.frame.size, CGSizeZero)) {
+                customViewSize = [_customView sizeThatFits:CGSizeMake(INT16_MAX, INT16_MAX)];
+            }
+            else {
+                customViewSize = _customView.frame.size;
+            }
+        }
+        _customView.bounds = (CGRect){{0.0, 0.0}, customViewSize};
+    }
+    else {
+        if (!_imageView.isHidden) {
+            topView = _imageView;
+            [_imageView sizeToFit];
+        }
+    }
+    
+    if (topView) {
+        contentWidth = CGRectGetWidth(topView.bounds);
+        contentHeight = CGRectGetHeight(topView.bounds);
+    }
+    else {
+        // 顶部控件不存在则不需要间隙了。
         imageBottomSpace = 0.0;
     }
     
@@ -214,7 +241,8 @@ static inline BOOL P_NSAttributedStringIsEmpty(NSAttributedString *attributedTex
         CGFloat textMaxWidth = 0.0;
         if (_delegateHas.textPreferredMaxLayoutWidth) {
             textMaxWidth = [_delegate textPreferredMaxLayoutWidthForEmptyView:self];
-        } else {
+        }
+        else {
             textMaxWidth = CGRectGetWidth(self.bounds) - kViewHorizontalMargin * 2;
         }
         CGSize textSize = [_textLabel sizeThatFits:CGSizeMake(textMaxWidth, INT16_MAX)];
@@ -222,7 +250,8 @@ static inline BOOL P_NSAttributedStringIsEmpty(NSAttributedString *attributedTex
         contentWidth = fmax(contentWidth, textSize.width);
         contentHeight += imageBottomSpace;
         contentHeight += textSize.height;
-    } else {
+    }
+    else {
         // 同样的, 文本不存在则不需要间隙了.
         textBottomSpace = 0.0;
     }
@@ -232,7 +261,8 @@ static inline BOOL P_NSAttributedStringIsEmpty(NSAttributedString *attributedTex
         CGFloat detailTextMaxWidth = 0.0;
         if (_delegateHas.detailTextPreferredMaxLayoutWidth) {
             detailTextMaxWidth = [_delegate detailTextPreferredMaxLayoutWidthForEmptyView:self];
-        } else {
+        }
+        else {
             detailTextMaxWidth = CGRectGetWidth(self.bounds) - kViewHorizontalMargin * 2;
         }
         CGSize detailTextSize = [_detailTextLabel sizeThatFits:CGSizeMake(detailTextMaxWidth, INT16_MAX)];
@@ -240,11 +270,13 @@ static inline BOOL P_NSAttributedStringIsEmpty(NSAttributedString *attributedTex
         contentWidth = fmax(contentWidth, detailTextSize.width);
         if (!_textLabel.isHidden) {
             contentHeight += textBottomSpace;
-        } else {
+        }
+        else {
             contentHeight += imageBottomSpace;
         }
         contentHeight += detailTextSize.height;
-    } else {
+    }
+    else {
         // 同样的, 详细文本不存在则不需要间隙了.
         detailTextBottomSpace = 0.0;
     }
@@ -259,10 +291,12 @@ static inline BOOL P_NSAttributedStringIsEmpty(NSAttributedString *attributedTex
         contentWidth = fmax(contentWidth, CGRectGetWidth(buttonBounds));
         if (!_detailTextLabel.isHidden) {
             contentHeight += detailTextBottomSpace;
-        } else {
+        }
+        else {
             if (!_textLabel.isHidden) {
                 contentHeight += textBottomSpace;
-            } else {
+            }
+            else {
                 contentHeight += imageBottomSpace;
             }
         }
@@ -271,12 +305,12 @@ static inline BOOL P_NSAttributedStringIsEmpty(NSAttributedString *attributedTex
     
     // 布局
     CGFloat maxY = 0.0;
-    if (!_imageView.isHidden) {
-        CGSize imageSize = _imageView.bounds.size;
-        CGFloat imageX = (contentWidth - imageSize.width) * 0.5;
-        CGFloat imageY = 0.0;
-        _imageView.frame = CGRectMake(imageX, imageY, imageSize.width, imageSize.height);
-        maxY = CGRectGetMaxY(_imageView.frame);
+    if (topView) {
+        CGSize topViewSize = topView.bounds.size;
+        CGFloat topViewX = (contentWidth - topViewSize.width) * 0.5;
+        CGFloat topViewY = 0.0;
+        topView.frame = CGRectMake(topViewX, topViewY, topViewSize.width, topViewSize.height);
+        maxY = CGRectGetMaxY(topView.frame);
     }
     if (!_textLabel.isHidden) {
         CGSize textSize = _textLabel.bounds.size;
@@ -292,7 +326,8 @@ static inline BOOL P_NSAttributedStringIsEmpty(NSAttributedString *attributedTex
         {
             if (!_textLabel.isHidden) {
                 detailTextY = (maxY == 0.0) ? 0.0 : (maxY + textBottomSpace);
-            } else {
+            }
+            else {
                 detailTextY = (maxY == 0.0) ? 0.0 : (maxY + imageBottomSpace);
             }
         }
@@ -306,10 +341,12 @@ static inline BOOL P_NSAttributedStringIsEmpty(NSAttributedString *attributedTex
         {
             if (!_detailTextLabel.isHidden) {
                 buttonY = (maxY == 0.0) ? 0.0 : (maxY + detailTextBottomSpace);
-            } else {
+            }
+            else {
                 if (!_textLabel.isHidden) {
                     buttonY = (maxY == 0.0) ? 0.0 : (maxY + textBottomSpace);
-                } else {
+                }
+                else {
                     buttonY = (maxY == 0.0) ? 0.0 : (maxY + imageBottomSpace);
                 }
             }
@@ -344,13 +381,41 @@ static inline BOOL P_NSAttributedStringIsEmpty(NSAttributedString *attributedTex
         self.backgroundColor = [_delegate backgroundColorForEmptyView:self];
     }
     
-    // 图片
-    _imageView.hidden = YES;
-    if (_dataSourceHas.image) {
-        UIImage *image = [_dataSource imageForEmptyView:self];
-        if (image && !CGSizeEqualToSize(image.size, CGSizeZero)) {
-            _imageView.hidden = NO;
-            _imageView.image = image;
+    // 优先判断时候有自定义 view。
+    if (_dataSourceHas.customView) {
+        _imageView.hidden = YES;
+        UIView *customView = [_dataSource customViewForEmptyView:self];
+        if (customView && [customView isKindOfClass:UIView.class]) {
+            if (_customView) {
+                if (_customView != customView) {
+                    [_customView removeFromSuperview];
+                    _customView = customView;
+                    [_contentView addSubview:_customView];
+                }
+            }
+            else {
+                _customView = customView;
+                [_contentView addSubview:_customView];
+            }
+        }
+        else if (_customView) {
+            [_customView removeFromSuperview];
+            _customView = nil;
+        }
+    }
+    else {
+        // 没有自定义 view 后判断是否存在图片。
+        if (_customView) {
+            [_customView removeFromSuperview];
+            _customView = nil;
+        }
+        _imageView.hidden = YES;
+        if (_dataSourceHas.image) {
+            UIImage *image = [_dataSource imageForEmptyView:self];
+            if (image && !CGSizeEqualToSize(image.size, CGSizeZero)) {
+                _imageView.hidden = NO;
+                _imageView.image = image;
+            }
         }
     }
     
@@ -496,6 +561,8 @@ static inline BOOL P_NSAttributedStringIsEmpty(NSAttributedString *attributedTex
     _dataSource = dataSource;
     
     _dataSourceHas.image = [_dataSource respondsToSelector:@selector(imageForEmptyView:)];
+    _dataSourceHas.customView = [_dataSource respondsToSelector:@selector(customViewForEmptyView:)];
+    _dataSourceHas.customViewSize = [_dataSource respondsToSelector:@selector(customViewSizeForEmptyView:)];
     _dataSourceHas.text = [_dataSource respondsToSelector:@selector(textForEmptyView:)];
     _dataSourceHas.detailText = [_dataSource respondsToSelector:@selector(detailTextForEmptyView:)];
     _dataSourceHas.attributedText = [_dataSource respondsToSelector:@selector(attributedTextForEmptyView:)];

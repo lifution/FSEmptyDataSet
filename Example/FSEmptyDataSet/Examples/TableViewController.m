@@ -44,6 +44,8 @@
 {
     [super viewDidLoad];
     
+    self.title = @"TableView";
+    
     self.tableView.tableFooterView = UIView.new;
     
     self.tableView.fs_emptyDelegate = self;

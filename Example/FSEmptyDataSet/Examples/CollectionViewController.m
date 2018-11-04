@@ -48,6 +48,8 @@ static NSString *const kCellReuseId = @"kCellReuseId";
 {
     [super viewDidLoad];
     
+    self.title = @"CollectionView";
+    
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:kCellReuseId];
     
     self.collectionView.fs_emptyDataSource = self;
