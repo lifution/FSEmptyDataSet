@@ -23,11 +23,11 @@ self.collectionView.fs_emptyDataSource = self;
 
 ## 使用例子
 
-![普通](https://www.trustdream.com/picture/HQEmpty/normal.png)
+![普通](https://i.loli.net/2018/11/04/5bdea55d3e883.png)
 
-![tableView](https://www.trustdream.com/picture/HQEmpty/tableView.png) 
+![tableView](https://i.loli.net/2018/11/04/5bdea55ee502d.png) 
 
-![collectionView](https://www.trustdream.com/picture/HQEmpty/collectionView.png)
+![collectionView](https://i.loli.net/2018/11/04/5bdea55d3e924.png)
 
 ## 要求
 
