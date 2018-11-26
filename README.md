@@ -6,11 +6,11 @@
 * 修正：在 customView 无效的时候判断 UIImage 是否有效，如有效则设置显示 UIImage。
 
 ##### 1.0.2
-* 可以自定义 view 替代顶部 UIImageView 了，比如自定义一个 loadingView 之类的，可参考使用例子的第一个图。
+* 可以自定义 view 替代顶部 UIImageView 了，比如自定义一个 LoadingView 之类的，可参考使用例子的第一个图。
 
 ## 使用方式
 
-只要引入头文件 `FSEmptyDataSet` 之后遵守对应的 `FSEmptyViewDelegate` 和 ` FSEmptyViewDataSource` 即可, 然后实现对应的代理方法和数据源方法即可.
+只要引入头文件 `FSEmptyDataSet` 之后遵守对应的 `FSEmptyViewDelegate` 和 ` FSEmptyViewDataSource` , 然后实现对应的代理方法和数据源方法即可.
 
 UITableView 设置方法只需要两句代码即可:
 
