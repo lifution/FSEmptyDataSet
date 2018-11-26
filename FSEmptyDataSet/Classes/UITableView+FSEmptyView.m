@@ -88,7 +88,7 @@
     }
 }
 
-#pragma mark - Swizzled Methos
+#pragma mark - Swizzled Methods
 
 - (void)fsempty_reloadData
 {

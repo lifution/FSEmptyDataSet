@@ -108,12 +108,10 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-/*
- 
+/**
  如果没有实现所需的数据源方法则会默认隐藏对应的控件,
  比如没有实现 `emptyView: buttonTitleForState:` & `emptyView: buttonAttributedTitleForState:` & `buttonForEmptyView:`
  这三个方法至少一个, 则隐藏按钮, 其它控件类似.
- 
  */
 @protocol FSEmptyViewDataSource <NSObject>
 

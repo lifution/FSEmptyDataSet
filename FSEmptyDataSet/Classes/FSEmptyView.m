@@ -358,7 +358,7 @@ static inline BOOL P_NSAttributedStringIsEmpty(NSAttributedString *attributedTex
     return contentSize;
 }
 
-#pragma mark - Event Actions
+#pragma mark - Action
 
 - (void)p_didPressButton:(id)sender
 {
