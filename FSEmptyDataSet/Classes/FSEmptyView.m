@@ -461,12 +461,15 @@ static inline BOOL P_NSAttributedStringIsEmpty(NSAttributedString *attributedTex
         [_actionButton removeFromSuperview];
         _actionButton = nil;
     }
-    if (_dataSourceHas.button) { // 优先检测是否含有自定义button.
+    // 优先检测是否含有自定义button。
+    if (_dataSourceHas.button) {
         UIButton *button = [_dataSource buttonForEmptyView:self];
         if (button) {
             _actionButton = button;
         }
-    } else {
+    }
+    // 当没有自定义 button 的时候判断是否使用了默认 button。
+    if (!_actionButton) {
         if (_dataSourceHas.buttonTitleForState || _dataSourceHas.buttonAttributedTitleForState) {
             
             static NSArray *states;
