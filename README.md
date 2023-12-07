@@ -30,7 +30,7 @@ self.collectionView.fs_emptyDataSource = self;
 
 ## 使用例子
 
-<img src="https://i.loli.net/2018/11/04/5bdeb7f8e6931.gif" width="200px;"/> <img src="https://i.loli.net/2018/11/04/5bdea55d3e883.png" width="200px;"/> <img src="https://i.loli.net/2018/11/04/5bdea55ee502d.png" width="200px;"/> <img src="https://i.loli.net/2018/11/04/5bdea55d3e924.png" width="200px;"/>
+<img src="https://i.loli.net/2018/11/04/5bdeb7f8e6931.gif" width=20%/> <img src="https://i.loli.net/2018/11/04/5bdea55d3e883.png" width="20%"/> <img src="https://i.loli.net/2018/11/04/5bdea55ee502d.png" width="20%"/> <img src="https://i.loli.net/2018/11/04/5bdea55d3e924.png" width="20%"/>
 
 ## 安装要求
 
