@@ -10,11 +10,6 @@
 #endif
 #endif
 
-#import "FSEmptyDataSet.h"
-#import "FSEmptyView.h"
-#import "FSEmptyViewDefines.h"
-#import "UICollectionView+FSEmptyView.h"
-#import "UITableView+FSEmptyView.h"
 
 FOUNDATION_EXPORT double FSEmptyDataSetVersionNumber;
 FOUNDATION_EXPORT const unsigned char FSEmptyDataSetVersionString[];

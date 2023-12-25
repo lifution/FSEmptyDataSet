@@ -3,7 +3,7 @@ This application makes use of the following third party libraries:
 
 ## FSEmptyDataSet
 
-Copyright (c) 2018 lifusheng <lifution@icloud.com>
+Copyright (c) 2023 Sheng (https://github.com/lifution)
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
