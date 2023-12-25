@@ -8,7 +8,7 @@
 
 ## Important
 
-<span style="color: red">**This new version is not yet finish, and cannot be used for the time being.**</span>
+<span style="color: red">**This new version is not yet finished, and cannot be used for the time being.**</span>
 
 ## Requirements
 
