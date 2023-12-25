@@ -70,9 +70,6 @@ open class FSEmptyView: UIView {
     ///   - 设置 content 会覆盖已设置的 delegate 和 dataSource，
     ///     这三者没有先后优先级，默认为后者覆盖前者。
     ///
-    /// - Note:
-    ///   - 设置 content 后，FSEmptyView 内部会自动适配 theme 更新。
-    ///
     public var content: FSEmptyContent? {
         get { return _content }
         set {

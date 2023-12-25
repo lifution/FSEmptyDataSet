@@ -201,7 +201,7 @@ public class FSEmptyContentReload: FSEmptyContentProxy {
     public init(title: String? = "Reload", tintColor: UIColor? = nil) {
         let color = tintColor ?? .gray
         customButton = {
-            let button = UIButton(type: .roundedRect)
+            let button = UIButton()
             button.titleLabel?.font = .systemFont(ofSize: 16.0)
             button.setTitle(title, for: .normal)
             button.setTitleColor(color, for: .normal)
