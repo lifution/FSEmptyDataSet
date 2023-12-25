@@ -1,8 +1,14 @@
 PODS:
   - FSEmptyDataSet (2.0.0)
+  - SnapKit (5.6.0)
 
 DEPENDENCIES:
   - FSEmptyDataSet (from `../`)
+  - SnapKit
+
+SPEC REPOS:
+  trunk:
+    - SnapKit
 
 EXTERNAL SOURCES:
   FSEmptyDataSet:
@@ -10,7 +16,8 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   FSEmptyDataSet: 253639bb55591f603cc9c7a39c3865e7071cd666
+  SnapKit: e01d52ebb8ddbc333eefe2132acf85c8227d9c25
 
-PODFILE CHECKSUM: 475fee81735e7f3e97c2007ac437a8a9c5ad3788
+PODFILE CHECKSUM: 6545e0b2084460052859c6207d4b5d8109f1ff74
 
 COCOAPODS: 1.14.2
