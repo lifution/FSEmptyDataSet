@@ -53,7 +53,7 @@ public extension FSEmptyContentProxy {
     var imageBottomSpace: CGFloat { get { return 10.0 } set {} }
     var textBottomSpace: CGFloat { get { return 10.0 } set {} }
     var detailTextBottomSpace: CGFloat { get { return 10.0 } set {} }
-    var isScrollEnabled: Bool { get { return true } set {} }
+    var isScrollEnabled: Bool { get { return false } set {} }
     var image: UIImage? { get { return nil } set {} }
     var customView: UIView? { get { return nil } set {} }
     var title: String? { get { return nil } set {} }

@@ -167,7 +167,7 @@ public struct FSEmptyContentTemplate: FSEmptyContentProxy {
     public var imageBottomSpace: CGFloat       = 10.0
     public var textBottomSpace: CGFloat        = 10.0
     public var detailTextBottomSpace: CGFloat  = 10.0
-    public var isScrollEnabled: Bool           = true
+    public var isScrollEnabled: Bool           = false
     public var image: UIImage?
     public var customView: UIView?
     public var title: String?
