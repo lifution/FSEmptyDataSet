@@ -7,7 +7,7 @@
 //
 
 /*
- FSEmptyView 的布局规则:
+ FSEmptyView layout flow:
  
        ----------------
        | UIImageView  |
